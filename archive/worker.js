@@ -48,9 +48,11 @@ async function childrenOf(id,env,depth,shared){
   return all;
 }
 async function archive(env){
-  const id=String(env.NOTION_PAGE_ID||PAGE_DEFAULT).replace(/-/g,'');
-  if(!/^[a-f0-9]{32}$/i.test(id))throw new Error('Bad page ID');
-  const [page,blocks]=await Promise.all([notionGet('/pages/'+id,env),childrenOf(id,env,0,{total:0})]);
+  const bare=String(env.NOTION_PAGE_ID||PAGE_DEFAULT).replace(/-/g,'');
+  if(!/^[a-f0-9]{32}$/i.test(bare))throw new Error('Bad page ID');
+  const id=bare.replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/,'$1-$2-$3-$4-$5');
+  const page=await notionGet('/pages/'+id,env);
+  const blocks=await childrenOf(id,env,0,{total:0});
   return {title:'koldsleep Archive',source:'Notion',edited_at:page.last_edited_time||null,blocks};
 }
 async function homepage(ctx){
