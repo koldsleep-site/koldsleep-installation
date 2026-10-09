@@ -11,7 +11,7 @@ async function notionGet(route,env){
     const res=await fetch(NOTION_API+route,{headers:{Authorization:'Bearer '+env.NOTION_TOKEN,'Notion-Version':VERSION,Accept:'application/json'}});
     if(res.ok)return await res.json();
     if(res.status===429&&i<3){await sleep(Math.min(10,Math.max(1,Number(res.headers.get('retry-after'))||1))*1000);continue;}
-    throw new Error('Notion returned '+res.status);
+    const errorPayload=await res.json().catch(()=>({}));throw new Error('Notion '+res.status+' '+String(errorPayload.code||'api_error'));
   }
   throw new Error('Notion rate limit');
 }
@@ -89,7 +89,7 @@ export default {async fetch(request,env,ctx){
       const response=new Response(body,{status:200,headers:{...jsonHeaders,'cache-control':'public,max-age=60,s-maxage=300'}});
       ctx.waitUntil(cache.put(key,response.clone()));
       return response;
-    }catch(e){console.error('Notion sync:',e.message);return new Response(JSON.stringify({error:'Notion sync temporarily unavailable'}),{status:502,headers:{...jsonHeaders,'cache-control':'no-store'}});}
+    }catch(e){console.error('Notion sync:',e.message);return new Response(JSON.stringify({error:'Notion sync temporarily unavailable',diagnostic:String(e?.message||'Unknown error')}),{status:502,headers:{...jsonHeaders,'cache-control':'no-store'}});}
   }
   if(pathname==='/'||pathname==='/index.html')return homepage(ctx);
   return new Response('Not found',{status:404});
