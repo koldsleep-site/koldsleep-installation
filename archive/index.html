@@ -1,0 +1,1439 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="koldsleep — in a dream, refuge, friend, accomplice, nocturnal rendezvous, potentiality.">
+  <title>koldsleep — archive</title>
+  <style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Nanum+Myeongjo&family=Song+Myung&family=VT323&family=Old+Standard+TT&family=DM+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css');
+
+/* v3.5 / Editorial contrast without rules: significance is carried by type size,
+   weight, tracking and adjacency rather than lines or arbitrary rotation. */
+:root {
+  --black:#000; --white:#fff;
+  --gutter:clamp(8px,1.15vw,17px);
+  --lens-size:clamp(245px,30vw,410px);
+  --family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif;
+}
+*,*::before,*::after {box-sizing:border-box}
+html {background:var(--black);scroll-behavior:smooth;scroll-padding-top:50px}
+body {background:var(--black);color:var(--black);margin:0;min-height:100vh;
+  font-family:var(--family);font-weight:400;letter-spacing:-.035em;-webkit-font-smoothing:antialiased}
+a,button {color:inherit}
+a {text-decoration:none}
+button {cursor:pointer;font:inherit}
+a:focus-visible,button:focus-visible {outline:2px dashed var(--black);outline-offset:4px}
+[hidden] {display:none!important}
+::selection {background:#fff;color:#000}
+
+/* Keep exact-name transformations from the earlier versions. */
+.rf-word {display:inline-block;white-space:nowrap;vertical-align:baseline;letter-spacing:inherit}
+.rf-char {display:inline-block;position:relative;white-space:pre;
+  font-family:var(--rf-family,inherit);font-size:var(--rf-size,1em);
+  font-weight:inherit;line-height:inherit;
+  transform-origin:50% 70%;transform:translateY(var(--rf-y,0)) scaleX(var(--rf-x,1));
+  transition:transform .18s ease,font-size .18s ease}
+/* A true bitmap/8-bit glyph is guaranteed inside every exact brand-name instance.
+   The rest of the page, including headings, keeps the v3.7 Pretendard system. */
+.rf-char.rf-pixel {
+  font-family:var(--rf-family,monospace);
+  font-style:normal;
+  font-synthesis:none;
+  letter-spacing:0;
+  text-rendering:geometricPrecision;
+  -webkit-font-smoothing:none;
+}
+
+/* Persistent moving paper field. Readability requires clear lines inside it. */
+.reveal-square {position:fixed;z-index:1;left:0;top:0;
+  width:var(--lens-size);height:var(--lens-size);
+  background:var(--white);pointer-events:none;
+  transform:translate3d(var(--reveal-x,calc(54vw - var(--lens-size)/2)),var(--reveal-y,19vh),0);
+  will-change:transform;contain:paint}
+.site-header,main,.footer {position:relative;z-index:2;background:transparent;color:#000}
+.site-header {position:sticky;top:0;z-index:50}
+
+/* Navigation: no columns or separator strokes. Brand is a visual anchor. */
+.nav {display:flex;align-items:baseline;gap:clamp(12px,2.9vw,49px);
+  min-height:47px;padding:8px var(--gutter) 6px;overflow:visible}
+.nav a {flex:0 0 auto;white-space:nowrap;line-height:1.05;
+  font-size:clamp(12px,1.15vw,17px);font-weight:480;letter-spacing:-.046em;
+  transition:opacity .15s ease}
+.nav .brand-random {margin-right:auto;font-size:clamp(17px,1.75vw,27px);font-weight:710}
+.nav a:hover,.nav a[aria-current=location] {text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.16em}
+main {width:100%;max-width:none;margin:0;padding:0 var(--gutter)}
+
+/* OPENING — condensed and centered; kept from the artist's earlier request. */
+.intro {padding:clamp(10px,1.5vw,22px) 0 clamp(10px,1.3vw,18px);
+  text-align:center;scroll-margin-top:49px}
+.keyword-stage {display:block;margin:0 auto;max-width:1480px;min-height:0}
+.intro-tags, .intro-tags.ko {
+  font-family:var(--family);font-size:clamp(25px,3.0vw,46px);
+  line-height:1.075;letter-spacing:-.073em;font-weight:615;
+  text-wrap:balance;overflow-wrap:normal;margin:0 auto;
+  max-width:1460px}
+.intro-tags.ko {font-weight:455;margin-top:6px;line-height:1.12}
+.working-note-link-row {margin:15px auto 0;max-width:1050px;text-align:center}
+.working-note-link-row .installation-link {
+  display:inline;min-height:0;margin:0;padding:0;background:none;border:0;
+  font-family:var(--family);font-size:clamp(18px,1.8vw,27px);
+  font-weight:740;letter-spacing:-.064em;line-height:1.13;
+  text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.14em;
+  overflow-wrap:anywhere}
+.intro-statement {margin:clamp(18px,2.3vw,32px) auto 0;max-width:910px;
+  font:400 clamp(13px,1.15vw,16px)/1.37 var(--family);letter-spacing:-.035em}
+.intro-statement p,.intro-statement p.ko {font:inherit;margin:0 auto 9px;max-width:900px}
+
+/* SECTIONS — bold sectional landmarks, regular compact project titles. */
+.section {display:block;scroll-margin-top:48px;padding:clamp(13px,1.75vw,25px) 0 clamp(15px,2.1vw,31px);border:0}
+.section-mark {font-family:var(--family);font-size:clamp(48px,6.4vw,95px);
+  font-weight:790;letter-spacing:-.09em;line-height:.88;
+  margin:0 0 clamp(11px,1.45vw,24px);word-break:keep-all}
+.section-body {min-width:0}
+.work,.archive .work {display:flex;align-items:baseline;gap:clamp(8px,1vw,16px);
+  width:fit-content;max-width:100%;padding:2px 0 4px;margin:0;
+  min-height:0;border:0;background:transparent;line-height:1.08;
+  transition:none;overflow-wrap:anywhere}
+.work:first-child {border:0}
+.work-title {font-family:var(--family);font-size:clamp(28px,3.05vw,50px);
+  font-weight:630;line-height:1.09;letter-spacing:-.072em}
+.external-icon {flex:0 0 auto;font:450 clamp(14px,1.7vw,23px)/1 var(--family);margin:0}
+.work:hover .work-title,.work:focus-visible .work-title {text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.10em}
+/* Archive is denser than current development, but all titles have one
+   consistent weight and size. They can be scanned in a single visual pass. */
+.archive .work {padding:1px 0 4px;gap:9px}
+.archive .work-title {font-size:clamp(23px,2.5vw,38px);font-weight:470;line-height:1.115;letter-spacing:-.063em}
+.archive .external-icon {font-size:clamp(14px,1.4vw,20px)}
+.row-number {display:none!important}
+
+/* Small descriptive rubric vs large subscription action. */
+.secondary {margin-top:clamp(20px,2.5vw,36px);padding:0;border:0}
+.secondary h3 {font-size:clamp(13px,1.25vw,18px);font-weight:420;
+  line-height:1.25;letter-spacing:-.03em;margin:0 0 4px}
+.subscribe-link {display:inline-flex;align-items:baseline;gap:10px;
+  width:fit-content;max-width:100%;padding:0;margin:0;
+  background:transparent;border:0;line-height:1.07;
+  font-size:clamp(27px,3.3vw,53px);letter-spacing:-.064em;font-weight:680}
+.subscribe-link:hover,.subscribe-link:focus-visible {text-decoration:underline;text-decoration-thickness:1px}
+
+/* One compact paragraph of names; only people with bios are underlined. */
+.accomplice-note,.accomplice-note.ko {font-size:clamp(13px,1.17vw,16px);
+  font-weight:420;line-height:1.42;letter-spacing:-.035em;margin:0 0 7px;max-width:1000px}
+.accomplice-note.ko {margin-bottom:clamp(15px,1.9vw,27px)}
+.names-stream {font-size:clamp(21px,2.1vw,33px);font-weight:430;
+  line-height:1.34;letter-spacing:-.054em;word-break:keep-all;overflow-wrap:break-word}
+.person-trigger {display:inline;background:transparent;border:0;padding:0;margin:0;
+  vertical-align:baseline;font:inherit;text-align:left;
+  text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.115em}
+.person-trigger::after {content:' ';white-space:pre}
+.names-plain {display:inline;font:inherit;letter-spacing:inherit;white-space:normal}
+.person-trigger:hover {text-decoration-thickness:2px}
+
+/* No separators anywhere. The dialog is a deliberate high-contrast reading mode. */
+.person-dialog {position:fixed;inset:0;margin:auto;z-index:150;
+  width:min(720px,calc(100vw - 28px));max-height:min(88vh,820px);
+  padding:clamp(17px,3vw,34px);overflow:auto;
+  background:#fff;color:#000;border:0;box-shadow:none}
+.person-dialog::backdrop {background:rgba(0,0,0,.92);backdrop-filter:none}
+.person-dialog-head {display:flex;justify-content:space-between;align-items:flex-start;
+  gap:14px;margin:0 0 18px;padding:0;border:0}
+.person-dialog-head h2 {font-size:clamp(30px,4.5vw,64px);line-height:.99;
+  letter-spacing:-.072em;font-weight:760;margin:0}
+.dialog-close {border:0;background:transparent;font-size:32px;line-height:1;
+  min-width:40px;min-height:40px;cursor:pointer}
+.person-content {font-size:clamp(15px,1.4vw,20px);line-height:1.43;
+  letter-spacing:-.04em;overflow-wrap:anywhere}
+.person-content p {margin:0 0 15px;white-space:pre-line}
+.person-content img {max-width:100%;height:auto}
+
+.footer {width:100%;padding:clamp(24px,4vw,57px) var(--gutter) clamp(29px,5vw,65px);
+  display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;
+  font-size:clamp(16px,1.6vw,24px);line-height:1.23}
+.footer a {text-decoration:none}
+.footer a:hover {text-decoration:underline;text-underline-offset:.13em}
+.footer-source {font-size:clamp(11px,1.08vw,15px);font-weight:390}
+#updating-announcement {position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.installation-ticker,.ticker-track{display:none!important}
+
+/* Original wandering paper cat, not an SVG/Unicode replacement. */
+#koldkitty {position:fixed;left:0;top:0;z-index:110;
+  width:108px;height:72px;background:transparent;cursor:pointer;
+  image-rendering:pixelated;image-rendering:crisp-edges;
+  touch-action:manipulation;user-select:none;-webkit-user-select:none;
+  mix-blend-mode:difference}
+#koldkitty:focus-visible {outline:2px dashed #fff;outline-offset:3px}
+@media(max-width:760px){
+  :root{--gutter:9px;--lens-size:clamp(220px,66vw,310px)}
+  html {scroll-padding-top:42px}
+  .nav {padding:9px var(--gutter) 6px;gap:clamp(8px,2.6vw,19px);min-height:42px;align-items:baseline}
+  .nav .brand-random {font-size:clamp(15px,4vw,20px)}
+  .nav a {font-size:clamp(10px,2.7vw,13px)}
+  .intro{padding:12px 0 13px}
+  .intro-tags,.intro-tags.ko {font-size:clamp(26px,6.25vw,40px);line-height:1.09;letter-spacing:-.071em}
+  .intro-tags.ko {margin-top:9px}
+  .working-note-link-row {margin-top:16px}
+  .working-note-link-row .installation-link {font-size:clamp(17px,4.6vw,23px)}
+  .intro-statement{margin-top:31px;font-size:13px;line-height:1.36}
+  .intro-statement p{margin-bottom:9px}
+  .section {padding:15px 0 22px;scroll-margin-top:43px}
+  .section-mark {font-size:clamp(41px,12vw,67px);margin-bottom:12px;line-height:.94;letter-spacing:-.08em}
+  .work-title {font-size:clamp(28px,7vw,39px);line-height:1.095}
+  .work {padding:3px 0}
+  .archive .work-title {font-size:clamp(24px,6.1vw,34px)}
+  .archive .work {padding:2px 0}
+  .external-icon,.archive .external-icon {font-size:17px}
+  .secondary {margin-top:24px}
+  .secondary h3 {font-size:13px;margin-bottom:5px}
+  .subscribe-link {font-size:clamp(26px,6.75vw,38px)}
+  .accomplice-note,.accomplice-note.ko {font-size:13px;line-height:1.41;margin-bottom:6px}
+  .accomplice-note.ko{margin-bottom:16px}
+  .names-stream {font-size:clamp(20px,5.6vw,26px);line-height:1.37}
+  .footer {padding:32px var(--gutter) 48px;gap:8px}
+}
+@media(max-width:370px){.nav{gap:7px}.nav a{font-size:10px}.nav .brand-random{font-size:15px}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after {scroll-behavior:auto!important;transition:none!important}
+}
+
+
+/* v3.6 — Left-led typographic sequence and minimal visible accent.
+   Header is a single right-aligned set of equally weighted items.
+   Only the working-note link escapes the moving square's blackout. */
+.nav {
+  justify-content:flex-end;
+  gap:clamp(13px,2.45vw,35px);
+  padding-top:7px;
+  padding-bottom:7px;
+}
+.nav a {
+  margin:0;
+  font-size:clamp(13px,1.23vw,18px);
+  font-weight:455;
+  letter-spacing:-.045em;
+}
+.intro {
+  text-align:left;
+  padding-top:clamp(15px,2.05vw,30px);
+  padding-bottom:clamp(7px,1vw,15px);
+}
+.keyword-stage {
+  margin:0;
+  max-width:1370px;
+}
+.intro-tags,.intro-tags.ko {
+  margin-left:0;
+  margin-right:0;
+  max-width:1370px;
+  text-align:left;
+  text-wrap:pretty;
+  font-size:clamp(34px,3.6vw,56px);
+  line-height:1.095;
+  letter-spacing:-.069em;
+}
+.intro-tags {font-weight:610}
+.intro-tags.ko {
+  margin-top:clamp(11px,1.2vw,17px);
+  line-height:1.12;
+  font-weight:460;
+}
+.intro-statement {
+  width:100%;
+  max-width:1090px;
+  margin:clamp(28px,3.1vw,46px) 0 0;
+  text-align:left;
+  font-family:var(--family);
+  font-size:clamp(17px,1.47vw,22px);
+  font-weight:405;
+  line-height:1.39;
+  letter-spacing:-.036em;
+}
+.intro-statement p,.intro-statement p.ko {
+  margin:0 0 clamp(10px,1.1vw,16px);
+  max-width:1090px;
+  text-align:left;
+}
+.working-note-link-row {
+  margin:clamp(8px,1vw,15px) 0 0;
+  max-width:100%;
+  text-align:left;
+}
+.working-note-link-row .installation-link {
+  display:inline-block;
+  max-width:100%;
+  padding:2px;
+  margin:0;
+  border:0;
+  background:#fff;
+  color:#000;
+  font-family:var(--family);
+  font-size:clamp(17px,1.55vw,23px);
+  font-weight:520;
+  line-height:1.22;
+  letter-spacing:-.048em;
+  text-decoration:none;
+  white-space:normal;
+  overflow-wrap:break-word;
+}
+.working-note-link-row .installation-link:hover,
+.working-note-link-row .installation-link:focus-visible {
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:.13em;
+  outline:2px solid #fff;
+  outline-offset:3px;
+}
+.updates-row {
+  margin:clamp(18px,2.8vw,42px) 0 clamp(14px,1.8vw,29px);
+  text-align:left;
+  padding:0;
+}
+.updates-link {
+  display:inline-block;
+  padding:0;
+  margin:0;
+  font-family:var(--family);
+  font-size:clamp(25px,2.6vw,39px);
+  font-weight:400;
+  line-height:1.14;
+  letter-spacing:-.060em;
+  text-decoration:none;
+}
+.updates-link:hover,.updates-link:focus-visible {
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:.11em;
+}
+/* v3.6 — Contact address and source credit share the same left edge
+   as all editorial copy; no rule or centered footer treatment. */
+.footer {
+  align-items:flex-start;
+  text-align:left;
+  margin:0;
+}
+.footer a {align-self:flex-start;text-align:left}
+@media(max-width:760px) {
+  .nav {justify-content:flex-end;gap:clamp(9px,2.6vw,17px);padding:10px var(--gutter) 7px}
+  .nav a {font-size:clamp(11px,2.8vw,14px);font-weight:440}
+  .intro {padding-top:16px;padding-bottom:8px}
+  .intro-tags,.intro-tags.ko {
+    font-size:clamp(32px,8.5vw,42px);
+    line-height:1.09;
+    letter-spacing:-.071em;
+  }
+  .intro-tags.ko {margin-top:14px;line-height:1.13}
+  .intro-statement {
+    max-width:100%;
+    margin-top:31px;
+    font-size:clamp(15px,4vw,17px);
+    line-height:1.43;
+  }
+  .intro-statement p,.intro-statement p.ko {margin-bottom:14px}
+  .working-note-link-row {margin-top:8px}
+  .working-note-link-row .installation-link {
+    font-size:clamp(15px,3.9vw,18px);
+    line-height:1.23;
+    letter-spacing:-.055em;
+  }
+  .updates-row {margin:28px 0 10px}
+  .updates-link {font-size:clamp(24px,6.1vw,30px);line-height:1.12}
+}
+
+
+/* v3.7 | Editorial optical refinements: no new structure or ornament.
+   Harmonized paragraph scale; rhythm led by visual hierarchy, not rules. */
+:root { --editorial-copy-size:clamp(15px,1.29vw,19px); }
+/* The rental notice, accomplice note and expanded biographies share a scale. */
+.intro-statement,
+.accomplice-note,
+.accomplice-note.ko,
+.person-content {
+  font-family:var(--family);
+  font-size:var(--editorial-copy-size);
+  font-weight:410;
+  line-height:1.46;
+  letter-spacing:-.028em;
+}
+.intro-statement p,.intro-statement p.ko {margin-bottom:12px}
+.accomplice-note,.accomplice-note.ko {max-width:1000px;margin-bottom:10px}
+.accomplice-note.ko {margin-bottom:clamp(15px,1.7vw,24px)}
+.person-content p {margin-bottom:13px}
+/* Optically quieter headings, preserving the existing content hierarchy. */
+.intro-tags,.intro-tags.ko {font-size:clamp(34px,3.55vw,55px);line-height:1.115;letter-spacing:-.061em}
+.intro-tags {font-weight:595}
+.intro-tags.ko {font-weight:455;line-height:1.145}
+.section-mark {font-size:clamp(48px,6.3vw,93px);font-weight:765;letter-spacing:-.080em;line-height:.925}
+.work-title {font-size:clamp(28px,3vw,49px);font-weight:615;letter-spacing:-.064em;line-height:1.11}
+.archive .work-title {font-size:clamp(23px,2.5vw,38px);font-weight:480;letter-spacing:-.056em;line-height:1.14}
+.names-stream {font-weight:425;letter-spacing:-.047em;line-height:1.37}
+.nav a {letter-spacing:-.035em}
+.updates-link {letter-spacing:-.048em;line-height:1.17}
+.working-note-link-row .installation-link {letter-spacing:-.039em;line-height:1.25}
+.footer {line-height:1.27;letter-spacing:-.025em}
+@media(max-width:760px) {
+  :root {--editorial-copy-size:clamp(15px,4vw,16px)}
+  .intro-statement {line-height:1.46}
+  .intro-statement p,.intro-statement p.ko {margin-bottom:13px}
+  .accomplice-note,.accomplice-note.ko {line-height:1.46;margin-bottom:8px}
+  .accomplice-note.ko {margin-bottom:16px}
+  .person-content {line-height:1.46}
+  .intro-tags,.intro-tags.ko {font-size:clamp(32px,8.45vw,42px);line-height:1.115;letter-spacing:-.061em}
+  .intro-tags.ko {line-height:1.145}
+  .section-mark {font-size:clamp(41px,11.9vw,66px);letter-spacing:-.073em;line-height:.945}
+  .work-title {font-size:clamp(28px,6.95vw,39px);line-height:1.12}
+  .archive .work-title {font-size:clamp(24px,6.05vw,34px);line-height:1.145}
+  .names-stream {line-height:1.39;letter-spacing:-.045em}
+}
+
+
+/* v3.9: Original cat photograph inside the rude nerd read biography. */
+.person-content .profile-photo {margin:0;max-width:100%;}
+.person-content .profile-photo img {display:block;max-width:100%;height:auto;max-height:65dvh;object-fit:contain;object-position:left top;}
+.person-content .profile-photo .photo-unavailable {font-size:var(--editorial-copy-size);font-weight:410;line-height:1.46;letter-spacing:-.028em;}
+</style>
+</head>
+<body>
+<!-- A white moving aperture is the only surface on which the black content can be read. -->
+<div id="reveal-square" class="reveal-square" aria-hidden="true"></div>
+<canvas id="koldkitty" width="108" height="72" role="button" tabindex="0" aria-label="koldkitty — 클릭하면 종이가 되어 설치 페이지로 이동합니다"></canvas>
+<header class="site-header" id="top">
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#about" aria-current="location">info</a>
+    <a href="#development">in development</a>
+    <a href="#archive">archive</a>
+    <a href="#accomplices">accomplices</a>
+  </nav>
+</header>
+<main id="main">
+  <section class="intro" id="about" aria-label="koldsleep 소개">
+    <div class="keyword-stage" id="intro-left">
+      <h1 class="intro-tags">in a dream · refuge · friend · accomplice · nocturnal rendezvous · potentiality</h1>
+      <p class="intro-tags ko">꿈속 · 은신처 · 친구 · 공범 · 심야 약속 장소 · 가능성</p>
+    </div>
+    <div class="intro-statement" id="intro-right">
+      <p>koldsleep is not a theater, museum, gallery, or alternative art space. We do not accept rental-only inquiries. For collaborations, proposals, or other conversations, please contact us at koldsleep@gmail.com.</p>
+      <p class="ko">콜드슬립은 극장 · 미술관 · 갤러리 또는 대안 예술 공간이 아닙니다. 단순 대관 문의는 받고 있지 않습니다. 그 외 협업의 제안이나 대화는 koldsleep@gmail.com으로 부탁드립니다.</p>
+    </div>
+    <div class="working-note-link-row"><a class="installation-link" href="https://installation.koldsleep.com/" target="_blank" rel="noopener noreferrer">koldsleep installation — working notes ↗</a></div>
+    
+  </section>
+  <div class="updates-row"><a class="updates-link" href="https://page.stibee.com/subscriptions/440340" target="_blank" rel="noopener noreferrer">Get updates on new work ↗</a></div>
+  <section class="section" id="development" aria-labelledby="dev-label"><div class="section-mark" id="dev-label">In Development</div><div class="section-body" id="dev-content" aria-live="polite"></div></section>
+  <section class="section" id="archive" aria-labelledby="archive-label"><div class="section-mark" id="archive-label">Archive</div><div class="section-body archive" id="archive-content"></div></section>
+  <section class="section" id="accomplices" aria-labelledby="accomplice-label"><div class="section-mark" id="accomplice-label">Accomplices</div><div class="section-body" id="people-content"></div></section>
+</main>
+<footer class="footer"><a href="mailto:koldsleep@gmail.com">koldsleep@gmail.com</a><a class="footer-source" href="https://k0ldsleep.notion.site/" target="_blank" rel="noopener noreferrer" id="synced-at">Source: Notion (Updated October 9, 2026)</a></footer>
+<dialog id="person-dialog" class="person-dialog" aria-labelledby="person-dialog-title"><div class="person-dialog-head"><h2 id="person-dialog-title"></h2><button id="person-close" class="dialog-close" aria-label="소개 닫기" type="button">×</button></div><div id="person-dialog-content" class="person-content"></div></dialog>
+<div id="updating-announcement" role="status" aria-live="polite"></div>
+<script>
+'use strict';
+const NOTION_SOURCE='https://k0ldsleep.notion.site/';
+const SNAPSHOT={
+  edited_at:'2026-10-09T01:57:31.717Z',
+  sections:[
+    {key:'development',blocks:[
+      {type:'heading_3',text:'In Development'},
+      {type:'child_page',title:'심야 약속 (Loading…)',url:'https://app.notion.com/p/3f2875c0f5d88028baa6f270d13f05df'},
+      {type:'child_page',title:'Midnight Coffee Club',url:'https://app.notion.com/p/3e9875c0f5d880f2b2b4dba144a25e12'},
+      {type:'heading_3',text:'Get updates on new work'}
+    ]},
+    {key:'archive',blocks:[
+      {type:'heading_3',text:'Archive'},
+      {type:'child_page',title:'이인환각연쇄고리 (2021–2026)',url:'https://app.notion.com/p/778875c0f5d8836185c781ba07dfd3cb'},
+      {type:'child_page',title:'Night Bodies (2025–2026)',url:'https://app.notion.com/p/459875c0f5d8828896b00191c0f4c3ad'},
+      {type:'work_link',title:'수면용 현악기 〈슬리핑 스트링〉',url:'https://sleepingstring.netlify.app/',subtitle:'sleeping string'},
+      {type:'work_link',title:'百鬼夜行 · 100 kiyakou · 백귀야행',url:'https://theghostproject.com/100kiyakou-jp/',subtitle:'the ghost project'},
+      {type:'work_link',title:'악기형 소설 〈가장 개인적인 악기〉',url:'https://koldsleep.netlify.app/',subtitle:'koldsleep.netlify.app'},
+      {type:'child_page',title:'Phantom Coordinates · 유령 좌표 (2025)',url:'https://app.notion.com/p/1c3875c0f5d882cda6490146606c6150'},
+      {type:'child_page',title:'Night Score (2024–2025)',url:'https://app.notion.com/p/eac875c0f5d882b6a53601ac8a9584fd'},
+      {type:'child_page',title:'Heterochronie (2023)',url:'https://app.notion.com/p/a6e875c0f5d8838aa37c012969a50d04'}
+    ]},
+    {key:'accomplices',blocks:[
+      {type:'heading_3',text:'Accomplices'},
+      {type:'paragraph',text:'If you’ve been part of what happens here but don’t see your name listed, would like to change how your name appears, are listed more than once under different names, or wish to add a short bio, please write to koldsleep@gmail.com. Other corrections and additions to the credits are welcome.'},
+      {type:'paragraph',text:'이곳에 연루되었음을 확신하는데 본인 이름이 누락되어 있는 경우 · 이름 표기를 변경하고 싶은 경우 · 닉네임으로 인해 이름이 중복 표기된 경우 · 관련 본인 소개를 넣고 싶은 경우 등, 여타 요청은 koldsleep@gmail.com으로 부탁드립니다.'},
+      {type:'divider'},
+      {type:'toggle',text:'김미현',children:[{type:'paragraph',text:'KIM Mihyun (she/they)\nexplores narratives and interactions set in motion through singular bodies, as well as the conditions of vulnerability. What kinds of events might be sensed before they arrive, and promised, here and now? This curiosity persists. Director of koldsleep.\n\n각자의 몸을 매개로 촉발되는 서사와 상호작용, 그리고 취약성의 조건을 탐구한다. 지금 여기에서 어떤 사건을 예감하고 약속할 수 있을까. 긴 호기심이 있다. 콜드슬립 디렉터.'}]},
+      {type:'toggle',text:'rude nerd read',children:[{type:'image',url:'/api/rude-nerd-read-cat',text:'rude nerd read — 고양이 사진'}]},
+      {type:'toggle',text:'한주연',children:[{type:'paragraph',text:'HAN Juyeon (she/her)\nPoet, writer. Most myself while translating sensation into language. Structured around four points: sorrow, beauty, composure, innocence. Something I endure, something I choose.\n\n시인, 작가. 감각을 글로 번역할 때 스스로를 가장 좋아할 수 있는 사람.\n슬픔과 아름다움과 의연함과 순진함을 꼭짓점으로 사용하는 도형이다. 그것이 기쁘고 고통스럽다.'}]},
+      {type:'toggle',text:'나일선',children:[{type:'paragraph',text:'NA Ilseon\nWrote a book about films that were never made and people who keep disappearing.\n\n결코 만들어지지 못한 영화들과 계속해서 사라지는 사람들에 대한 책을 썼다.'}]},
+      {type:'paragraph',text:'위지영 손나예 김선오 박유진 박하늘 서이제 윤은성 이아름 장수양 김해솔 홍세영 장은정 란이 b 키아나 유은호 작은후진해변 시간의잎 아카리 ing_min 지우 moremore 채령 명진 차올로지 이동민 수양 Soy 이지현 아니 김지언 sisibang 마고 선희 유모목 지은 바다 윤보라 김현주 김미영 김연재 정윤 탱자 윤경희 신예슬 김예솔비 박혜인 김수화 허윤경 함연선 하은빈 머머 정다영 Judy AON 이지영 예나 차야 곽비누 호영 조혜수 이남기 뉴 주임이 midnightgospel 예진 박정연 박수민 전소영 유자 조은영 채언 백온유 오상의 포포투 주원 수박 신 밀 염소 여름 김예빈 우여민 다잉 지선 희 김재은 류지영 서조우 전구 춘자 나비 윤영임 이혜인 수강 드림 지현 최가람 Song 또자 Avant 욱 다다 점민지 황윤경 만수킴 희진 김아림 이섭 수민 K 문영 예하 JIN 양배 최유윤 L 조안 Kim 예림 박유라 아라이브 숨 태공 ranii 4444 양도이 수리 임창욱 신예림 진채 Guin Jess 안가오니 무우 겨울 이끼 민경 그레이 스탠리버튼 이이영 이노마 리마 정옥희 도영 오새영 황정아 임연교 미마 양지지 엠케이 김지연 시우 리윤 고스트 youareyoung유어령 박정근 규진 산타 루시 compass 데온 김초희 장한비 윤송희 룹앤테일 손지희 원형빈 NickLuscombe 주정현 황승환 김리윤 주버드 박병우 수박 임기택 쥬라기공원 이이영 다인 min_ 임서희 이형은 김덕환 김민우 김환진 귤냄새 이다은 이재윤 이호정 윤선생 정은주 진자라 문솔 ShuPERERA SUGIMOTOAtsuko TANIGUCHIAsuka ElizabethJESSE 백도협 MurakiYuriko 류한길 끄고키고 황용하 이옥토 아키비스트 이연숙(리타) 외 익명들'}
+    ]}
+  ]
+};
+const $=id=>document.getElementById(id);
+const create=(tag,className,text)=>{const el=document.createElement(tag);if(className)el.className=className;if(text!=null)el.textContent=text;return el;};
+const validURL=url=>{try{const u=new URL(url,document.baseURI);return ['https:','http:','mailto:'].includes(u.protocol)?u.href:null}catch{return null}};
+function appendText(target,text){String(text||'').split('\n').forEach((part,i)=>{if(i)target.append(document.createElement('br'));if(part)target.append(document.createTextNode(part))})}
+function rich(target,block){
+  if(Array.isArray(block.rich_text)&&block.rich_text.length){for(const item of block.rich_text){const label=item.plain_text??item.text?.content??'';let el;const href=validURL(item.href||item.text?.link?.url);if(href){el=create('a',null);el.href=href;if(href.startsWith('http')){el.target='_blank';el.rel='noopener noreferrer'}}else{el=create('span',null)}
+  const a=item.annotations||{};if(a.bold)el.style.fontWeight='700';if(a.italic)el.style.fontStyle='italic';if(a.underline)el.style.textDecoration='underline';if(a.strikethrough)el.style.textDecoration='line-through';if(a.code)el.style.fontFamily='monospace';appendText(el,label);target.append(el)}}else{appendText(target,block.text??block.title??'')}}
+function plain(block){return (block.rich_text||[]).map(x=>x.plain_text??x.text?.content??'').join('')||block.text||block.title||''}
+function blockToElement(block){
+  const t=block.type;
+  if(t==='divider')return create('hr');
+  if(t==='child_page') {const a=create('a','child-link',block.title||'Untitled page'); const u=validURL(block.url||`https://www.notion.so/${(block.id||'').replaceAll('-','')}`);if(u){a.href=u;a.target='_blank';a.rel='noopener noreferrer'}return a}
+  if(t==='image'){
+    const url=validURL(block.url);
+    const fig=create('figure','profile-photo');
+    if(!url){fig.append(create('p','photo-unavailable','사진은 노션 API 연결 후 표시됩니다.'));return fig}
+    const img=create('img');
+    img.src=url;img.loading='eager';img.decoding='async';img.alt=plain(block)||'rude nerd read의 고양이 사진';
+    const fallback=create('p','photo-unavailable','사진은 노션 API 연결 후 표시됩니다.');
+    img.addEventListener('load',()=>{fallback.hidden=true});
+    img.addEventListener('error',()=>{img.hidden=true;fallback.hidden=false});
+    fallback.hidden=true;fig.append(img,fallback);return fig
+  }
+  if(t==='toggle'){const d=create('details','person');const s=create('summary');rich(s,block);d.append(s);const wrap=create('div','person-content notion-rich');for(const child of block.children||[]){const el=blockToElement(child);if(el)wrap.append(el)}d.append(wrap);return d}
+  if(['paragraph','heading_1','heading_2','heading_3','quote','bulleted_list_item','numbered_list_item','to_do','code','callout'].includes(t)){
+    const tag=t.startsWith('heading')?'h'+t.split('_')[1]:t==='quote'?'blockquote':t==='bulleted_list_item'||t==='numbered_list_item'?'li':t==='code'?'pre':'p';const el=create(tag,'notion-block');rich(el,block);if(t==='to_do')el.prepend(block.checked?'☒ ':'☐ ');if(block.children?.length){const children=create('div');for(const child of block.children){const sub=blockToElement(child);if(sub)children.append(sub)}const wrap=create('div');wrap.append(el,children);return wrap}return el}
+  if(block.children?.length){const group=create('div','notion-rich');for(const child of block.children){const el=blockToElement(child);if(el)group.append(el)}return group}
+  return null
+}
+function allNodes(nodes){return (nodes||[]).flatMap(b=>[b,...allNodes(b.children||[])])}
+function sectionByKey(sections,key){return (sections||[]).find(s=>s.key===key)?.blocks||[]}
+const STIBEE_URL='https://page.stibee.com/subscriptions/440340';
+let peopleWithProfiles=[];
+function appendWorks(key,blocks){
+  const host=$(key==='development'?'dev-content':'archive-content');host.replaceChildren();let count=0;
+  for(const b of blocks){
+    if(b.type==='heading_3' && key==='development' && /get updates/i.test(plain(b))){
+      // The call to action lives directly above In Development as one understated text link.
+      // Skip the former Notion heading instead of duplicating a subscribe button here.
+      continue;
+    }
+    if(['heading_1','heading_2','heading_3','divider','button'].includes(b.type))continue;
+    let title='',url='';
+    if(b.type==='child_page'||b.type==='work_link'){title=b.title;url=b.url}
+    if(b.type==='paragraph'){
+      const txt=plain(b).trim(),firstLink=(b.rich_text||[]).find(x=>x.href||x.text?.link?.url);
+      url=firstLink?.href||firstLink?.text?.link?.url||'';title=txt.split('\n').map(x=>x.trim()).filter(Boolean)[0]||'';
+      if(!url && txt.length>180)continue;
+    }
+    if(!title)continue;
+    count++;
+    const item=create(validURL(url)?'a':'div','work');if(validURL(url)){item.href=validURL(url);item.target='_blank';item.rel='noopener noreferrer'}
+    
+    item.append(create('span','work-title',title));item.append(create('span','external-icon',url?'↗':'—'));host.append(item);
+  }
+  if(!count)host.append(create('p',null,'표시할 항목이 없습니다.'));
+}
+function appendPeople(blocks){
+  const host=$('people-content');host.replaceChildren();peopleWithProfiles=[];
+  const items=blocks.filter(b=>!['heading_1','heading_2','heading_3','divider','button'].includes(b.type));
+  const flow=create('div','names-stream');let inNames=false;let noteCount=0;
+  for(const b of items){
+    if(b.type==='toggle'){
+      inNames=true;const idx=peopleWithProfiles.push(b)-1;
+      const label=plain(b).trim();const trigger=create('button','person-trigger',label);
+      trigger.type='button';trigger.dataset.personIndex=String(idx);
+      trigger.setAttribute('aria-haspopup','dialog');trigger.setAttribute('aria-label',label+' 소개 보기');flow.append(trigger,document.createTextNode(' '));
+    }else if(b.type==='paragraph'){
+      const txt=plain(b).trim();if(!txt)continue;
+      if(inNames||txt.length>450){inNames=true;const wall=create('span','names-plain',txt.replace(/\s+/g,' '));if(flow.hasChildNodes())flow.append(document.createTextNode(' '));flow.append(wall)}
+      else{const el=create('p',noteCount>0?'accomplice-note ko':'accomplice-note');rich(el,b);host.append(el);noteCount++}
+    }
+  }
+  if(flow.hasChildNodes())host.append(flow);
+}
+function renderIntro(blocks){if(!blocks.length)return;
+  const paragraphs=blocks.filter(b=>b.type==='paragraph');const sentences=paragraphs.map(b=>plain(b).trim()).filter(Boolean);
+  const tagEn=sentences.find(t=>t.startsWith('in a dream'));const tagKo=sentences.find(t=>t.startsWith('꿈속'));
+  const en=sentences.find(t=>t.startsWith('koldsleep is not'));const ko=sentences.find(t=>t.startsWith('콜드슬립은'));
+  if(tagEn||tagKo){const host=$('intro-left');host.replaceChildren();if(tagEn)host.append(create('h1','intro-tags',tagEn));if(tagKo)host.append(create('p','intro-tags ko',tagKo))}
+  if(en||ko){const host=$('intro-right');host.replaceChildren();if(en)host.append(create('p',null,en));if(ko)host.append(create('p','ko',ko))}
+  for(const b of paragraphs){for(const item of b.rich_text||[]){const url=validURL(item.href||item.text?.link?.url);if(url&&/working notes|installation/i.test(item.plain_text||item.text?.content||'')){document.querySelectorAll('.installation-link').forEach(a=>a.href=url);return}}}
+}
+function locateSections(raw){if(Array.isArray(raw.sections))return raw.sections;const calls=allNodes(raw.blocks||[]).filter(b=>b.type==='callout');const sections=[];
+  for(const call of calls){const blocks=call.children||[];const head=blocks.find(x=>x.type?.startsWith('heading'));const label=(head?plain(head):plain(call)).trim().toLowerCase();let key;
+    if(label.includes('in development'))key='development';else if(label==='archive')key='archive';else if(label.includes('accomplices'))key='accomplices';else if(label.includes('koldsleep')||label.includes('콜드슬립'))key='intro';
+    if(key)sections.push({key,blocks})}
+  return sections
+}
+const RF_FONTS=[
+  'Arial, sans-serif',
+  '"Song Myung",serif',
+  '"Gowun Batang",serif',
+  '"Nanum Myeongjo",serif',
+  '"VT323",monospace',
+  '"Old Standard TT",serif',
+  '"DM Mono",monospace',
+  'Georgia,serif',
+  '"Times New Roman",serif'
+];
+const RF_GRAPHEMES = typeof Intl.Segmenter==='function'
+  ? new Intl.Segmenter('ko',{granularity:'grapheme'}) : null;
+const RF_BRAND_PATTERN = /(koldsleep|콜드슬립)/gi;
+const RF_REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
+const RF_ACTIVE = new Map();
+function rfLetters(word){
+  return RF_GRAPHEMES
+    ? [...RF_GRAPHEMES.segment(word)].map(x=>x.segment)
+    : Array.from(word);
+}
+function rfRestyle(word){
+  const chars=[...word.querySelectorAll('.rf-char')];
+  if(!chars.length)return;
+  // In every "koldsleep" and "콜드슬립", keep exactly one guaranteed
+  // unmistakable pixel-font glyph even when all other fonts randomize.
+  const korean=/[가-힣]/.test(word.dataset.rfBrand||'');
+  const pixelIndex=Math.floor(Math.random()*chars.length);
+  chars.forEach((ch,index)=>{
+    const isPixel=index===pixelIndex;
+    ch.classList.toggle('rf-pixel',isPixel);
+    const font=isPixel
+      ? (korean ? 'Galmuri11,monospace' : '"Press Start 2P",monospace')
+      : RF_FONTS[Math.floor(Math.random()*RF_FONTS.length)];
+    ch.style.setProperty('--rf-family',font);
+    // Pixel fonts have different metrics; calibrate sizes optically so a
+    // single 8-bit character punctuates the word without breaking its line.
+    const size=isPixel ? (korean?1.07:0.87) : 0.94 + Math.random()*0.12;
+    ch.style.setProperty('--rf-size',size.toFixed(3)+'em');
+    ch.style.setProperty('--rf-y',isPixel ? '-0.012em' : ((Math.random()-.5)*.11).toFixed(3)+'em');
+    ch.style.setProperty('--rf-x',isPixel ? '1' : (0.94 + Math.random()*.12).toFixed(3));
+  });
+}
+function rfSchedule(word){
+  if(RF_REDUCED_MOTION.matches)return;
+  // Recompose every visible brand word on an exact one-second beat.
+  const timeout=setTimeout(()=>{
+    RF_ACTIVE.delete(word);
+    if(!word.isConnected)return;
+    if(document.visibilityState!=='hidden')rfRestyle(word);
+    rfSchedule(word);
+  },1000);
+  RF_ACTIVE.set(word,timeout);
+}
+function rfCleanOrphans(){
+  for(const [word,id] of RF_ACTIVE){
+    if(!word.isConnected){clearTimeout(id);RF_ACTIVE.delete(word)}
+  }
+}
+function randomizeTypography(){
+  // The DOM is scanned after Notion data is rendered, including modal content and footer.
+  // Other text stays in unmodified Pretendard nodes; only exact brand words are split.
+  rfCleanOrphans();
+  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+  const nodes=[];
+  let node;
+  while((node=walker.nextNode())){
+    if(!/koldsleep|콜드슬립/i.test(node.textContent))continue;
+    const parent=node.parentElement;
+    if(!parent || parent.closest('.rf-word,.rf-char,script,style,noscript,textarea,pre,code,option,[contenteditable],[data-no-rf]'))continue;
+    nodes.push(node);
+  }
+  for(const textNode of nodes){
+    const input=textNode.textContent;
+    const frag=document.createDocumentFragment();
+    let last=0;
+    const matches=input.matchAll(/koldsleep|콜드슬립/gi);
+    for(const match of matches){
+      const pos=match.index;
+      if(pos>last)frag.append(document.createTextNode(input.slice(last,pos)));
+      const word=document.createElement('span');word.className='rf-word';word.dataset.rfBrand=match[0];
+      for(const letter of rfLetters(match[0])){
+        const ch=create('span','rf-char',letter);
+        word.append(ch);
+      }
+      rfRestyle(word);
+      frag.append(word);
+      // Schedule after insertion, when word is in the live DOM.
+      requestAnimationFrame(()=>{if(word.isConnected&&!RF_ACTIVE.has(word))rfSchedule(word)});
+      last=pos+match[0].length;
+    }
+    if(last<input.length)frag.append(document.createTextNode(input.slice(last)));
+    textNode.replaceWith(frag);
+  }
+}
+function updateSourceDate(iso){const date=new Date(iso);if(isNaN(date.getTime()))return;
+  const parts=new Intl.DateTimeFormat('en-CA',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Seoul'}).formatToParts(date);
+  const vals=Object.fromEntries(parts.map(p=>[p.type,p.value]));
+  const month=new Intl.DateTimeFormat('en-US',{month:'long',timeZone:'Asia/Seoul'}).format(date);
+  $('synced-at').textContent=`Source: Notion (Updated ${month} ${Number(vals.day)}, ${vals.year})`;
+}
+function render(data,live){
+  const sections=locateSections(data);
+  renderIntro(sectionByKey(sections,'intro'));
+  appendWorks('development',sectionByKey(sections,'development'));
+  appendWorks('archive',sectionByKey(sections,'archive'));
+  appendPeople(sectionByKey(sections,'accomplices'));
+  if(data.edited_at)updateSourceDate(data.edited_at);
+  randomizeTypography();
+}
+const dialog=$('person-dialog');
+$('person-close').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+$('people-content').addEventListener('click',e=>{
+  const trigger=e.target.closest('.person-trigger');if(!trigger)return;
+  const b=peopleWithProfiles[Number(trigger.dataset.personIndex)];if(!b)return;
+  $('person-dialog-title').textContent=plain(b);
+  const content=$('person-dialog-content');content.replaceChildren();
+  for(const child of b.children||[]){const el=blockToElement(child);if(el)content.append(el)}
+  if(!content.childNodes.length)content.append(create('p',null,'소개 내용이 없습니다.'));
+  randomizeTypography();dialog.showModal();
+});
+const navLinks=[...document.querySelectorAll('.nav a')];
+function setActive(){const hash=location.hash||'#about';for(const a of navLinks){if(a.getAttribute('href')===hash)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')}}
+window.addEventListener('hashchange',setActive);
+render(SNAPSHOT,false);setActive();
+// Reload Notion on entry, every five minutes, and when the tab becomes visible.
+let lastNotionFingerprint='';
+let notionFetchInProgress=false;
+async function syncFromNotion(){
+  if(location.protocol==='file:'||document.visibilityState==='hidden'||notionFetchInProgress)return;
+  notionFetchInProgress=true;
+  try{
+    const res=await fetch('/api/archive',{headers:{Accept:'application/json'},cache:'no-store'});
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    const json=await res.json();
+    if(!Array.isArray(json.blocks)&&!Array.isArray(json.sections))throw new Error('Invalid API response');
+    const fingerprint=JSON.stringify({blocks:json.blocks,sections:json.sections,edited_at:json.edited_at});
+    if(fingerprint!==lastNotionFingerprint){
+      lastNotionFingerprint=fingerprint;
+      render(json,true);$('updating-announcement').textContent='노션 최신 내용을 반영했습니다.';
+    }
+  }catch(e){console.info('Notion API unavailable — preview snapshot is shown.',e.message)}
+  finally{notionFetchInProgress=false}
+}
+syncFromNotion();
+window.setInterval(syncFromNotion,5*60*1000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncFromNotion()});
+</script>
+<script>
+
+/* Moving aperture: keep one square visible before the first pointer event.
+   Design scale: desktop 30vw capped at 410px; phone 66vw capped at 310px. */
+(() => {
+ const square = document.getElementById('reveal-square');
+ if(!square)return;
+ const reduced=window.matchMedia('(prefers-reduced-motion:reduce)');
+ let side=0, targetX=0, targetY=0, currentX=0, currentY=0;
+ let userInteracted=false;
+ function size(){return square.getBoundingClientRect().width||Math.min(410,innerWidth*.30);}
+ function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
+ function setTarget(x,y){
+   targetX=clamp(x-side/2,0,Math.max(0,innerWidth-side));
+   targetY=clamp(y-side/2,0,Math.max(0,innerHeight-side));
+ }
+ function apply(){square.style.setProperty('--reveal-x',currentX+'px');square.style.setProperty('--reveal-y',currentY+'px');}
+ function reset(){
+   side=size();
+   if(!userInteracted){setTarget(innerWidth*.53,innerHeight*.39); currentX=targetX;currentY=targetY;}
+   else {targetX=clamp(targetX,0,Math.max(0,innerWidth-side));targetY=clamp(targetY,0,Math.max(0,innerHeight-side)); currentX=targetX;currentY=targetY;}
+   apply();
+ }
+ function move(e){userInteracted=true;setTarget(e.clientX,e.clientY);if(reduced.matches){currentX=targetX;currentY=targetY;apply();}}
+ window.addEventListener('pointermove',move,{passive:true});
+ window.addEventListener('pointerdown',move,{passive:true});
+ window.addEventListener('resize',reset,{passive:true});
+ // Reveal any control reached with the keyboard, rather than leaving focus invisible.
+ window.addEventListener('focusin',e=>{
+   if(e.target===document.body || e.target===document.documentElement)return;
+   const rect=e.target.getBoundingClientRect();
+   if(!rect.width||!rect.height)return;
+   userInteracted=true;
+   setTarget(rect.left+rect.width/2,rect.top+Math.min(rect.height/2,30));
+ });
+ function animate(){
+   const ease=reduced.matches?1:.16;
+   currentX+=(targetX-currentX)*ease;
+   currentY+=(targetY-currentY)*ease;
+   if(Math.abs(currentX-targetX)<.2)currentX=targetX;
+   if(Math.abs(currentY-targetY)<.2)currentY=targetY;
+   apply();
+   requestAnimationFrame(animate);
+ }
+ reset();requestAnimationFrame(animate);
+})();
+
+(() => {
+  "use strict";
+
+  const canvas = document.getElementById("koldkitty");
+  const ctx = canvas.getContext("2d", { alpha: true });
+
+  ctx.imageSmoothingEnabled = false;
+
+  const GRID_W = 36;
+  const GRID_H = 24;
+  const PIXEL = 3;
+
+  const W = GRID_W * PIXEL;
+  const H = GRID_H * PIXEL;
+
+  const TOP_GAP = window.innerWidth < 760 ? 68 : 83;
+
+  const DAY_SPEED = 1.6;
+  const NIGHT_SPEED = 6.0;
+  const FLEE_MULTIPLIER = 2.2;
+  const WATCH_SPEED_MULTIPLIER = 0.42;
+
+  const WATCH_RADIUS = 260;
+  const FLEE_RADIUS = 105;
+  const SURPRISE_DURATION = 340;
+
+  const WALK = 0;
+  const SLEEP = 1;
+
+  const KITTY = 0;
+  const PAPER = 1;
+
+  const INSTALLATION_URL = "https://installation.koldsleep.com/";
+
+  const PAPER_FALL_DURATION = 4000;
+
+  // The destination is chosen only after a real user click.
+  // Navigation happens in this same tab exactly 4 seconds later,
+  // which avoids popup blockers and blank-window failures.
+  let pendingPortalURL = INSTALLATION_URL;
+
+  let x = Math.max(20, window.innerWidth - W - 40);
+  let y = Math.max(TOP_GAP, Math.min(window.innerHeight - H - 10, window.innerHeight * .46));
+  let targetY = y;
+  let nextVerticalDriftAt = performance.now() + rand(3400, 7300);
+
+  let direction = -1;
+
+  let state = WALK;
+  let stateStarted = performance.now();
+  let stateDuration = rand(7000, 18000);
+
+  let form = KITTY;
+
+  let cursorX = -10000;
+  let cursorY = -10000;
+
+  let watching = false;
+  let fleeing = false;
+  let surprised = false;
+
+  let wasInsideFleeRadius = false;
+  let surpriseStartedAt = 0;
+
+  let paperStartX = 0;
+  let paperVelocityY = 0;
+  let paperPhase = 0;
+  let paperAngle = 0;
+  let paperLanded = false;
+  let paperLandedAt = 0;
+  let paperStartedAt = 0;
+  let paperStartY = 0;
+  let paperFallDistance = 220;
+  let paperDriftPrimary = 18;
+  let paperDriftSecondary = 7;
+  let paperWobbleCycles = 1.8;
+  let paperAngleAmplitude = 0.35;
+  let paperFinalAngle = 0;
+
+  let activeSleepZ = 0;
+  let sleepZLiftAmount = 2;
+  let sleepZCycleStarted = 0;
+  let sleepZCycleDuration = 850;
+
+  let lastFrame = performance.now();
+
+  const walk1Sprite = [
+    "....................................",
+    "....................................",
+    "...##.......##.......................",
+    "..####.....####......................",
+    ".###############.....................",
+    "#################....................",
+    ".###############.....................",
+    "..##############.....................",
+    "..#############......................",
+    "...######################...........",
+    "....######################..........",
+    ".....######################.........",
+    "......######################........",
+    "......######################........",
+    ".......####################.........",
+    "........##################..........",
+    ".........#####..########............",
+    "..........###....#####..............",
+    "....................................",
+    "....................................",
+    "....................................",
+    "....................................",
+    "....................................",
+    "...................................."
+  ];
+
+  const walk2Sprite = [
+    "....................................",
+    "....................................",
+    "...##.......##.......................",
+    "..####.....####......................",
+    ".###############.....................",
+    "#################....................",
+    ".###############.....................",
+    "..##############.....................",
+    "..#############......................",
+    "....#####################............",
+    ".....######################..........",
+    ".....#######################.........",
+    "......######################.........",
+    ".......#####################.........",
+    ".......####################..........",
+    "........##################...........",
+    ".........#####..#######..............",
+    "..........###....#####...............",
+    "....................................",
+    "....................................",
+    "....................................",
+    "....................................",
+    "....................................",
+    "...................................."
+  ];
+
+  const watchSprite = walk1Sprite;
+
+  const sleepSprite = [
+    "....................................",
+    "....................................",
+    "....................................",
+    "....................................",
+    ".....##.......##.....................",
+    "....####.....####....................",
+    "...###############..................",
+    "..#################.................",
+    "..########################..........",
+    "...##########################.......",
+    "....##########################......",
+    ".....#########################......",
+    "......########################......",
+    "........#####################.......",
+    "..........#################.........",
+    "............############............",
+    "...............########.............",
+    "....................................",
+    "....................................",
+    "....................................",
+    "....................................",
+    "....................................",
+    "....................................",
+    "...................................."
+  ];
+
+
+  function rand(min, max) {
+    return min + Math.random() * (max - min);
+  }
+
+  function isNight() {
+    const h = new Date().getHours();
+    return h >= 21 || h < 9;
+  }
+
+  function currentSpeed() {
+    return isNight() ? NIGHT_SPEED : DAY_SPEED;
+  }
+
+  function setCanvasPosition() {
+    canvas.style.transform = `translate3d(${Math.round(x)}px, ${Math.round(y)}px, 0)`;
+  }
+
+  function clear() {
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+  }
+
+  function px(gx, gy, color = "#fff") {
+    ctx.fillStyle = color;
+    ctx.fillRect(gx * PIXEL, gy * PIXEL, PIXEL, PIXEL);
+  }
+
+  function drawSprite(sprite) {
+    for (let gy = 0; gy < sprite.length; gy++) {
+      const row = sprite[gy];
+      for (let gx = 0; gx < row.length; gx++) {
+        if (row[gx] === "#") {
+          px(gx, gy);
+        }
+      }
+    }
+  }
+
+  function drawFullerCatFace() {
+    // left cheek
+    px(1, 6); px(1, 7);
+    px(1, 8); px(2, 8);
+    px(2, 9); px(3, 9);
+
+    // right cheek — deliberately uneven
+    px(15, 6);
+    px(15, 7); px(16, 7);
+    px(14, 8); px(15, 8);
+    px(14, 9);
+
+    // lower face
+    px(4, 9); px(5, 9);
+    px(11, 9); px(12, 9); px(13, 9);
+  }
+
+  function drawFourShortLegs(frame) {
+    if (frame === 0) {
+      px(9,15); px(9,16); px(8,17); px(7,18);
+      px(13,15); px(13,16); px(14,17); px(15,18);
+      px(19,15); px(19,16); px(18,17); px(17,18);
+      px(23,15); px(23,16); px(24,17); px(25,18);
+    } else {
+      px(9,15); px(9,16); px(10,17); px(11,18);
+      px(13,15); px(13,16); px(12,17); px(11,18);
+      px(19,15); px(19,16); px(20,17); px(21,18);
+      px(23,15); px(23,16); px(22,17); px(21,18);
+    }
+  }
+
+  function drawCatTail(frame) {
+    if (frame === 0) {
+      px(24,13); px(25,13);
+      px(26,14); px(27,14); px(28,14);
+      px(29,13); px(30,12); px(31,11);
+      px(32,10); px(33,9); px(34,8); px(35,8);
+    } else {
+      px(24,13); px(25,13); px(26,13);
+      px(27,14); px(28,14);
+      px(29,13); px(30,12); px(31,11);
+      px(32,10); px(33,9); px(34,9); px(35,8);
+    }
+  }
+
+  function drawSleepingTail() {
+    px(22,13); px(23,13);
+    px(24,14); px(25,14); px(26,14); px(27,14);
+    px(28,13); px(29,12); px(30,11);
+  }
+
+  function drawWhiskers() {
+    ctx.fillStyle = "#fff";
+    // left — intentionally unequal
+    ctx.fillRect(0, 23, 14, 1);
+    ctx.fillRect(2, 28, 12, 1);
+    ctx.fillRect(0, 34, 11, 1);
+
+    // right — not mirrored
+    ctx.fillRect(38, 22, 15, 1);
+    ctx.fillRect(40, 28, 13, 1);
+    ctx.fillRect(41, 35, 10, 1);
+  }
+
+  function drawSlitEyes() {
+    ctx.fillStyle = "#000";
+    ctx.fillRect(12, 20, 8, 2);
+    ctx.fillRect(28, 21, 8, 2);
+  }
+
+  function drawSleepingEyes() {
+    ctx.fillStyle = "#000";
+    ctx.fillRect(17, 22, 7, 1);
+    ctx.fillRect(30, 22, 7, 1);
+  }
+
+  function resetSleepZAnimation(now = performance.now()) {
+    activeSleepZ = Math.floor(Math.random() * 3);
+    sleepZLiftAmount = 1 + Math.floor(Math.random() * 2);
+    sleepZCycleDuration = rand(650, 1100);
+    sleepZCycleStarted = now;
+  }
+
+  function drawSleepZzz(now) {
+    if (!sleepZCycleStarted) {
+      resetSleepZAnimation(now);
+    }
+
+    let elapsed = now - sleepZCycleStarted;
+
+    if (elapsed >= sleepZCycleDuration) {
+      activeSleepZ = Math.floor(Math.random() * 3);
+      sleepZLiftAmount = 1 + Math.floor(Math.random() * 2);
+      sleepZCycleDuration = rand(650, 1100);
+      sleepZCycleStarted = now;
+      elapsed = 0;
+    }
+
+    const t = elapsed / sleepZCycleDuration;
+    const lift = Math.round(-sleepZLiftAmount * Math.sin(Math.PI * t));
+
+    const ys = [17, 17, 17];
+    ys[activeSleepZ] += lift;
+
+    ctx.fillStyle = "#fff";
+    ctx.font = '10pt "Press Start 2P", monospace';
+    ctx.textBaseline = "alphabetic";
+
+    ctx.fillText("z", 73, ys[0]);
+    ctx.fillText("z", 82, ys[1]);
+    ctx.fillText("z", 91, ys[2]);
+  }
+
+  function drawBackSpikes() {
+    // attached only to the back
+    px(13,10); px(13,9); px(12,8);
+    px(15,10); px(15,9);
+    px(17,10); px(17,9); px(17,8); px(18,7);
+    px(20,10); px(20,9); px(21,8);
+    px(23,10); px(23,9); px(24,9);
+    px(25,11); px(25,10); px(26,9);
+  }
+
+  function drawCloseSurprisedEyes() {
+    ctx.fillStyle = "#000";
+
+    // left O
+    ctx.fillRect(16,17,8,3);
+    ctx.fillRect(16,28,8,3);
+    ctx.fillRect(13,20,3,8);
+    ctx.fillRect(24,20,3,8);
+
+    // right O, very close
+    ctx.fillRect(28,17,8,3);
+    ctx.fillRect(28,28,8,3);
+    ctx.fillRect(26,20,3,8);
+    ctx.fillRect(36,20,3,8);
+  }
+
+  function drawPaper() {
+    ctx.save();
+
+    ctx.translate(W / 2, H / 2);
+    ctx.rotate(paperAngle);
+    ctx.translate(-W / 2, -H / 2);
+
+    const paperX = 12 * PIXEL;
+    const paperY = 3 * PIXEL;
+    const paperW = 11 * PIXEL;
+    const paperH = 15 * PIXEL;
+
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(paperX, paperY, paperW, paperH);
+
+    // nominal 1 CSS/canvas pixel gray outline
+    ctx.strokeStyle = "#b9b9b9";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(paperX + 0.5, paperY + 0.5, paperW - 1, paperH - 1);
+
+    ctx.restore();
+  }
+
+  function drawCat(now) {
+    if (state === SLEEP && !surprised && !fleeing) {
+      drawSprite(sleepSprite);
+      drawSleepingTail();
+      drawSleepingEyes();
+      drawSleepZzz(now);
+      return;
+    }
+
+    const frameSpeed = (fleeing || isNight()) ? 45 : 180;
+    const frame = Math.floor(now / frameSpeed) % 2;
+
+    let sprite;
+    if (watching || surprised) {
+      sprite = watchSprite;
+    } else {
+      sprite = frame === 0 ? walk1Sprite : walk2Sprite;
+    }
+
+    ctx.save();
+
+    if (direction === 1) {
+      ctx.translate(W, 0);
+      ctx.scale(-1, 1);
+    }
+
+    drawSprite(sprite);
+    drawFullerCatFace();
+    drawFourShortLegs(frame);
+    drawCatTail(frame);
+    drawWhiskers();
+
+    if (surprised || fleeing) {
+      drawBackSpikes();
+      drawCloseSurprisedEyes();
+    } else {
+      drawSlitEyes();
+    }
+
+    ctx.restore();
+  }
+
+  function lookAtCursor() {
+    const center = x + W / 2;
+    direction = cursorX < center ? -1 : 1;
+  }
+
+  function updateCursorInteraction(now) {
+    const centerX = x + W / 2;
+    const centerY = y + H / 2;
+
+    const dx = cursorX - centerX;
+    const dy = cursorY - centerY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < FLEE_RADIUS) {
+      if (!wasInsideFleeRadius) {
+        surpriseStartedAt = now;
+
+        if (state === SLEEP) {
+          state = WALK;
+          stateStarted = now;
+          stateDuration = rand(7000, 19000);
+        }
+      }
+
+      wasInsideFleeRadius = true;
+
+      if (now - surpriseStartedAt < SURPRISE_DURATION) {
+        surprised = true;
+        fleeing = false;
+        watching = false;
+      } else {
+        surprised = false;
+        fleeing = true;
+        watching = false;
+      }
+    } else if (distance < WATCH_RADIUS) {
+      wasInsideFleeRadius = false;
+      surprised = false;
+      fleeing = false;
+      watching = state === WALK;
+    } else {
+      wasInsideFleeRadius = false;
+      surprised = false;
+      fleeing = false;
+      watching = false;
+    }
+  }
+
+  function constrainX() {
+    const maxX = Math.max(0, window.innerWidth - W);
+
+    if (x < 0) {
+      x = 0;
+      direction = 1;
+    }
+
+    if (x > maxX) {
+      x = maxX;
+      direction = -1;
+    }
+  }
+
+  function chooseNextState(now) {
+    if (state === WALK) {
+      state = SLEEP;
+      resetSleepZAnimation(now);
+      stateDuration = rand(7000, 26000);
+    } else {
+      state = WALK;
+      stateDuration = rand(7000, 19000);
+
+      if (Math.random() < 0.40) {
+        direction *= -1;
+      }
+    }
+
+    stateStarted = now;
+  }
+
+  function choosePortalDestination() {
+    pendingPortalURL = INSTALLATION_URL;
+  }
+
+  function turnIntoPaper(now = performance.now()) {
+    // This is the ONLY place where KITTY -> PAPER is allowed.
+    form = PAPER;
+
+    watching = false;
+    fleeing = false;
+    surprised = false;
+    wasInsideFleeRadius = false;
+
+    // Choose exactly one destination for this click.
+    choosePortalDestination();
+
+    paperStartX = x;
+    paperStartY = y;
+
+    const availableDown = Math.max(0, window.innerHeight - H - paperStartY);
+    const minFall = Math.min(80, availableDown);
+    const maxFall = Math.min(360, availableDown);
+    paperFallDistance = maxFall <= minFall ? availableDown : rand(minFall, maxFall);
+    paperDriftPrimary = rand(8, 26);
+    paperDriftSecondary = rand(2, 10);
+    paperWobbleCycles = rand(1.1, 2.5);
+    paperAngleAmplitude = rand(0.16, 0.46);
+    paperFinalAngle = rand(-0.18, 0.18);
+
+    paperStartedAt = now;
+    paperVelocityY = 0;
+    paperPhase = 0;
+    paperAngle = -0.20;
+    paperLanded = false;
+    paperLandedAt = 0;
+  }
+
+  function navigateToPortal() {
+    // Same-tab navigation is intentionally used here.
+    // Unlike delayed window.open(), this is not subject to popup blocking.
+    window.location.assign(pendingPortalURL);
+  }
+
+  function respawn() {
+    form = KITTY;
+    state = WALK;
+
+    x = rand(
+      20,
+      Math.max(21, window.innerWidth - W - 20)
+    );
+
+    y = rand(TOP_GAP, Math.max(TOP_GAP, window.innerHeight-H-15));
+    targetY = y;
+
+    direction = Math.random() < 0.5 ? -1 : 1;
+
+    stateStarted = performance.now();
+    stateDuration = rand(7000, 18000);
+
+    paperLanded = false;
+    paperLandedAt = 0;
+    paperStartedAt = 0;
+    paperStartY = TOP_GAP;
+  }
+
+  function updatePaper(now, frameScale) {
+    if (paperLanded) return;
+
+    const elapsed = Math.max(0, now - paperStartedAt);
+    const t = Math.min(1, elapsed / PAPER_FALL_DURATION);
+    const eased = t * (0.92 + 0.08 * t);
+    const targetY = Math.min(window.innerHeight - H, paperStartY + paperFallDistance);
+    const phase = t * Math.PI * 2 * paperWobbleCycles;
+
+    x =
+      paperStartX +
+      Math.sin(phase) * paperDriftPrimary +
+      Math.sin(phase * 0.43 + 0.8) * paperDriftSecondary;
+
+    x = Math.max(0, Math.min(window.innerWidth - W, x));
+    y = paperStartY + (targetY - paperStartY) * eased;
+    paperAngle = Math.sin(phase * 1.15) * paperAngleAmplitude;
+
+    if (t >= 1) {
+      y = targetY;
+      paperAngle = paperFinalAngle;
+      paperLanded = true;
+      paperLandedAt = now;
+
+      // Exactly 4 seconds after a genuine cat click, navigate in this tab.
+      navigateToPortal();
+    }
+  }
+
+  function update(now, dt) {
+    const frameScale = Math.min(2.0, Math.max(0.1, dt / 33.333));
+
+    if (form === PAPER) {
+      updatePaper(now, frameScale);
+      return;
+    }
+
+    updateCursorInteraction(now);
+
+    if (surprised) {
+      lookAtCursor();
+    } else if (fleeing) {
+      const center = x + W / 2;
+      direction = cursorX < center ? 1 : -1;
+      x += currentSpeed() * FLEE_MULTIPLIER * direction * frameScale;
+    } else if (watching && state === WALK) {
+      x += currentSpeed() * WATCH_SPEED_MULTIPLIER * direction * frameScale;
+    } else if (state === WALK) {
+      x += currentSpeed() * direction * frameScale;
+    }
+
+    if (!surprised && !fleeing && now - stateStarted > stateDuration) {
+      chooseNextState(now);
+    }
+
+    // A light vertical drift lets the original paper cat wander around the archive,
+    // rather than remaining confined to the top edge of the browser.
+    if (now > nextVerticalDriftAt) {
+      const lower = Math.max(TOP_GAP, window.innerHeight - H - 15);
+      targetY = rand(TOP_GAP, lower);
+      nextVerticalDriftAt = now + rand(4300, 9600);
+    }
+    if (state === WALK && !surprised) {
+      y += (targetY - y) * Math.min(.018 * frameScale, .08);
+      if (fleeing) y += Math.sign(y + H/2 - cursorY) * 1.7 * frameScale;
+    }
+    y = Math.max(TOP_GAP, Math.min(window.innerHeight-H, y));
+    constrainX();
+  }
+
+  function render(now) {
+    clear();
+
+    if (form === PAPER) {
+      drawPaper();
+    } else {
+      drawCat(now);
+    }
+
+    setCanvasPosition();
+  }
+
+  function loop(now) {
+    const dt = now - lastFrame;
+    lastFrame = now;
+
+    update(now, dt);
+    render(now);
+
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener("pointermove", (e) => {
+    cursorX = e.clientX;
+    cursorY = e.clientY;
+  }, { passive: true });
+
+  canvas.addEventListener('keydown', (e)=>{if((e.key==='Enter'||e.key===' ') && form===KITTY){e.preventDefault();turnIntoPaper(performance.now());}});
+  canvas.addEventListener("click", (e) => {
+    // Only a genuine user click can transform the cat.
+    // Programmatic/synthetic events cannot trigger the paper state.
+    if (!e.isTrusted) return;
+    if (e.button !== 0) return;
+    if (form !== KITTY) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    turnIntoPaper(performance.now());
+  });
+
+  window.addEventListener("resize", () => {
+    constrainX();
+
+    if (form === KITTY) {
+      y = Math.max(TOP_GAP,Math.min(window.innerHeight-H, y));
+      targetY = y;
+    }
+  });
+
+  setCanvasPosition();
+  requestAnimationFrame((now) => {
+    lastFrame = now;
+    requestAnimationFrame(loop);
+  });
+})();
+</script>
+</body>
+</html>
