@@ -11,7 +11,7 @@ async function notionGet(route,env){
     const res=await fetch(NOTION_API+route,{headers:{Authorization:'Bearer '+env.NOTION_TOKEN,'Notion-Version':VERSION,Accept:'application/json'}});
     if(res.ok)return await res.json();
     if(res.status===429&&i<3){await sleep(Math.min(10,Math.max(1,Number(res.headers.get('retry-after'))||1))*1000);continue;}
-    const errorPayload=await res.json().catch(()=>({}));throw new Error('Notion '+res.status+' '+String(errorPayload.code||'api_error'));
+    const errorPayload=await res.json().catch(()=>({}));throw new Error('Notion '+res.status+' '+String(errorPayload.code||'api_error')+' at '+route.split('?')[0]);
   }
   throw new Error('Notion rate limit');
 }
