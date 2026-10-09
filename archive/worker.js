@@ -91,7 +91,7 @@ export default {async fetch(request,env,ctx){
       const response=new Response(body,{status:200,headers:{...jsonHeaders,'cache-control':'public,max-age=60,s-maxage=300'}});
       ctx.waitUntil(cache.put(key,response.clone()));
       return response;
-    }catch(e){console.error('Notion sync:',e.message);return new Response(JSON.stringify({error:'Notion sync temporarily unavailable',diagnostic:String(e?.message||'Unknown error')}),{status:502,headers:{...jsonHeaders,'cache-control':'no-store'}});}
+    }catch(e){console.error('Notion sync:',e.message);const sourceUnshared=/Notion 404 object_not_found at \/pages\//.test(String(e?.message||''));return new Response(JSON.stringify({error:'Notion sync temporarily unavailable',reason:sourceUnshared?'SOURCE_PAGE_NOT_SHARED':'NOTION_API_ERROR',action:sourceUnshared?'Share koldsleep Archive with the Notion integration configured in NOTION_TOKEN':undefined}),{status:502,headers:{...jsonHeaders,'cache-control':'no-store'}});}
   }
   if(pathname==='/'||pathname==='/index.html')return homepage(ctx);
   return new Response('Not found',{status:404});
