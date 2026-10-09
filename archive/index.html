@@ -147,6 +147,10 @@ main {width:100%;max-width:none;margin:0;padding:0 var(--gutter)}
   letter-spacing:-.072em;font-weight:760;margin:0}
 .dialog-close {border:0;background:transparent;font-size:32px;line-height:1;
   min-width:40px;min-height:40px;cursor:pointer}
+.dialog-close {outline:none;-webkit-tap-highlight-color:transparent}
+.dialog-close:focus-visible {outline:2px solid #000;outline-offset:2px}
+@media (hover:none) {.dialog-close:focus-visible {outline:none}}
+
 .person-content {font-size:clamp(15px,1.4vw,20px);line-height:1.43;
   letter-spacing:-.04em;overflow-wrap:anywhere}
 .person-content p {margin:0 0 15px;white-space:pre-line}
