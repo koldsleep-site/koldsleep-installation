@@ -473,10 +473,10 @@ const SNAPSHOT={
 };
 const $=id=>document.getElementById(id);
 const create=(tag,className,text)=>{const el=document.createElement(tag);if(className)el.className=className;if(text!=null)el.textContent=text;return el;};
-const validURL=url=>{try{const u=new URL(url,document.baseURI);return ['https:','http:','mailto:'].includes(u.protocol)?u.href:null}catch{return null}};
+const validURL=url=>{if(typeof url!=='string'||!url.trim())return null;try{const u=new URL(url,document.baseURI);return ['https:','http:','mailto:'].includes(u.protocol)?u.href:null}catch{return null}};
 function appendText(target,text){String(text||'').split('\n').forEach((part,i)=>{if(i)target.append(document.createElement('br'));if(part)target.append(document.createTextNode(part))})}
 function rich(target,block){
-  if(Array.isArray(block.rich_text)&&block.rich_text.length){for(const item of block.rich_text){const label=item.plain_text??item.text?.content??'';let el;const href=validURL(item.href||item.text?.link?.url);if(href){el=create('a',null);el.href=href;if(href.startsWith('http')){el.target='_blank';el.rel='noopener noreferrer'}}else{el=create('span',null)}
+  if(Array.isArray(block.rich_text)&&block.rich_text.length){for(const item of block.rich_text){const label=item.plain_text??item.text?.content??'';let el;const href=validURL(item.href||item.text?.link?.url);if(href&&!href.startsWith('mailto:')){el=create('a',null);el.href=href;if(href.startsWith('http')){el.target='_blank';el.rel='noopener noreferrer'}}else{el=create('span',null)}
   const a=item.annotations||{};if(a.bold)el.style.fontWeight='700';if(a.italic)el.style.fontStyle='italic';if(a.underline)el.style.textDecoration='underline';if(a.strikethrough)el.style.textDecoration='line-through';if(a.code)el.style.fontFamily='monospace';appendText(el,label);target.append(el)}}else{appendText(target,block.text??block.title??'')}}
 function plain(block){return (block.rich_text||[]).map(x=>x.plain_text??x.text?.content??'').join('')||block.text||block.title||''}
 function blockToElement(block){
