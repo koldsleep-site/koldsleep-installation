@@ -720,6 +720,7 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncFromNo
  const mobile=window.matchMedia('(max-width:760px)');
  let side=0,targetX=0,targetY=0,currentX=0,currentY=0;
  let userInteracted=false,gesture=null,keyboardFocus=false;
+ let scrollHold=false,lastPointer=null,holdPointer=null,lastMoveAt=-Infinity,lastFrame=0;
  function size(){return square.getBoundingClientRect().width||Math.min(410,innerWidth*.30);}
  function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
  function setTarget(x,y){
@@ -752,10 +753,18 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncFromNo
    if(mobile.matches){
      if(interactive(e.target))return;
      gesture={id:e.pointerId,x:e.clientX,y:e.clientY,axis:null,touch:e.pointerType!=='mouse'};
-   }else reveal(e.clientX,e.clientY,false);
+   }else if(!scrollHold)reveal(e.clientX,e.clientY,false);
  },{passive:true});
  window.addEventListener('pointermove',e=>{
-   if(!mobile.matches){reveal(e.clientX,e.clientY,false);return;}
+   if(!mobile.matches){
+     lastPointer={x:e.clientX,y:e.clientY};
+     if(scrollHold){
+       if(holdPointer&&Math.hypot(e.clientX-holdPointer.x,e.clientY-holdPointer.y)<5)return;
+       scrollHold=false;holdPointer=null;
+     }
+     lastMoveAt=performance.now();
+     reveal(e.clientX,e.clientY,false);return;
+   }
    if(!gesture||gesture.id!==e.pointerId)return;
    const dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;
    if(!gesture.axis){
@@ -772,18 +781,29 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncFromNo
    gesture=null;
  },{passive:true});
  window.addEventListener('pointercancel',()=>{gesture=null;},{passive:true});
+ window.addEventListener('wheel',e=>{
+   if(mobile.matches||e.ctrlKey)return;
+   scrollHold=true;
+   holdPointer=lastPointer||{x:e.clientX,y:e.clientY};
+   targetX=currentX;targetY=currentY;apply();
+ },{passive:true});
  window.addEventListener('keydown',e=>{if(e.key==='Tab')keyboardFocus=true;});
  window.addEventListener('resize',reset,{passive:true});
  window.addEventListener('focusin',e=>{
-   if(mobile.matches&&!keyboardFocus)return;
+   if((mobile.matches||scrollHold)&&!keyboardFocus)return;
+   if(keyboardFocus){scrollHold=false;holdPointer=null;}
    if(e.target===document.body||e.target===document.documentElement)return;
    const rect=e.target.getBoundingClientRect();
    if(!rect.width||!rect.height)return;
    userInteracted=true;
    setTarget(rect.left+rect.width/2,rect.top+Math.min(rect.height/2,30));
  });
- function animate(){
-   const ease=reduced.matches?1:.16;
+ function animate(now){
+   const dt=lastFrame?Math.min(50,Math.max(1,now-lastFrame)):1000/60;
+   lastFrame=now;
+   const movingMs=clamp(lastMoveAt+45-(now-dt),0,dt);
+   const desktopEase=1-Math.pow(.68,movingMs/(1000/60))*Math.pow(.54,(dt-movingMs)/(1000/60));
+   const ease=reduced.matches?1:mobile.matches?.16:desktopEase;
    currentX+=(targetX-currentX)*ease;
    currentY+=(targetY-currentY)*ease;
    if(Math.abs(currentX-targetX)<.2)currentX=targetX;
