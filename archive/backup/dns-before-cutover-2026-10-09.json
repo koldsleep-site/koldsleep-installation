@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-10-09",
+  "zone": "koldsleep.com",
+  "oldSiteRepo": "https://github.com/koldsleep-site/koldsleep-site/tree/backup-pre-archive-2026-10-09",
+  "backupBranch": "backup-pre-archive-2026-10-09",
+  "dnsRecords": [
+    {
+      "name": "www.koldsleep.com",
+      "type": "CNAME",
+      "content": "koldsleep-site.github.io",
+      "proxied": false,
+      "ttl": 1,
+      "id": "f1d9482041797d2a763a96f0132ff49b"
+    },
+    {
+      "name": "koldsleep.com",
+      "type": "A",
+      "content": "185.199.108.153",
+      "proxied": false,
+      "ttl": 1
+    },
+    {
+      "name": "koldsleep.com",
+      "type": "A",
+      "content": "185.199.109.153",
+      "proxied": false,
+      "ttl": 1
+    },
+    {
+      "name": "koldsleep.com",
+      "type": "A",
+      "content": "185.199.110.153",
+      "proxied": false,
+      "ttl": 1
+    },
+    {
+      "name": "koldsleep.com",
+      "type": "A",
+      "content": "185.199.111.153",
+      "proxied": false,
+      "ttl": 1
+    }
+  ],
+  "note": "MX/TXT email-related DNS records intentionally unchanged; www and root not yet changed"
+}
